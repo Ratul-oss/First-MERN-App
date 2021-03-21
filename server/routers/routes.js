@@ -2,11 +2,9 @@ const express = require("express");
 const router = express.Router();
 const UserData = require("../Model/userSchema");
 const bcrypt = require("bcrypt");
-const cookierParser = require("cookie-parser");
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
-router.use(cookierParser());
 
 router.get("/", (req, res) => {
   res.send("Hi there.");
@@ -26,58 +24,69 @@ router.get("/signup", (req, res) => {
 
 router.post("/register", async (req, res) => {
   try {
-    const {
-      name,
-      email,
-      gender,
-      phone,
-      password,
-      country,
-      profession,
-    } = req.body;
+    const typedName = req.body.name;
+    const typedMail = req.body.email;
+    const userGender = req.body.gender;
+    const typedPhone = req.body.phone;
+    const typedPassword = req.body.password;
+    const userCountry = req.body.country;
+    const typedProfession = req.body.profession;
 
-    const response = await UserData.findOne({ email: email });
-    if (response) {
-      res.status(400).json({ error: "Email already exists" });
+    if (
+      !typedName ||
+      !typedMail ||
+      !userGender ||
+      !typedPhone ||
+      !typedPassword ||
+      !userCountry ||
+      !typedProfession
+    ) {
+      res.status(400).json({ err: "Please fill all the fields properly" });
     }
 
-    const userData = new UserData({
-      name,
-      email,
-      gender,
-      phone,
-      password,
-      country,
-      profession,
+    const userInfo = new UserData({
+      name: typedName,
+      email: typedMail,
+      gender: userGender,
+      phone: typedPhone,
+      password: typedPassword,
+      country: userCountry,
+      profession: typedProfession,
     });
 
-    const data = await userData.save();
+    const checkEmail = await UserData.findOne({ email: typedMail });
+    const token = await userInfo.generateToken();
 
-    if (data) {
-      res.status(200).json({ success: "Registrations successful" });
+    if (checkEmail) {
+      res.status(400).json({ err: "Email already exists" });
     }
+
+    res.cookie("jwt", token);
+    await userInfo.save();
+    res.status(200).json({ success: "Your account has been registered" });
+    //
   } catch (err) {
     res.status(400).send(err);
   }
 });
-
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const data = await UserData.findOne({ email });
-    const isMatched = await bcrypt.compare(password, data.password);
+    const typedMail = req.body.email;
+    const typedPassword = req.body.password;
+    const data = await UserData.findOne({ email: typedMail });
+    const isMatched = await bcrypt.compare(typedPassword, data.password);
 
     if (isMatched) {
+      const token = await data.generateToken();
+      res.cookie("jwt", token);
       res
         .status(200)
-        .send(
-          `Log In success your name is ${data.name} and your email is ${data.email}`
-        );
+        .json({ success: `Successfuly logged in. ${data.name} ${data.email}` });
     } else {
-      res.send("Your log in details are incorrect");
+      res.status(400).json({ err: "Your login details are incorrect" });
     }
   } catch (err) {
-    res.status(400).send("Your log In details are incorrect");
+    res.status(400).json({ err: "Your login details are incorrect" });
   }
 });
 
