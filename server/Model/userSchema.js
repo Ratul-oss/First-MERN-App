@@ -3,6 +3,11 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// TODO: Create a schema
+// TODO: Then create a collection
+// TODO: After that create middleware which will hash the password
+// TODO: Then add another middleware which will generate and add auth tokens
+
 const dataSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -12,9 +17,10 @@ const dataSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    // checking if the email is not valid
     validate(value) {
       if (!validator.isEmail(value)) {
-        throw new Error("Your email is invalid");
+        throw new Error("Your email is not valid");
       }
     },
   },
@@ -62,7 +68,7 @@ dataSchema.methods.generateToken = async function () {
   }
 };
 
-// hashing the password
+// hashing the password before save
 dataSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 12);
@@ -70,6 +76,7 @@ dataSchema.pre("save", async function (next) {
   next();
 });
 
+// creating the collection/ model
 const UserData = new mongoose.model("User", dataSchema);
 
 module.exports = UserData;

@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Train+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@mixin navFlexAround {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@mixin flexColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+$mainColor: #0083fd;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.226);
+}
+
+nav {
+  @include navFlexAround();
+  padding: 5px 0px;
+  background: white;
+  border-bottom: 2px solid $mainColor;
+  z-index: 5;
+  position: sticky;
+  top: 0;
+  left: 0;
+  .nav_title {
+    color: rgb(68, 68, 68);
+    font-family: "Train One", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      color: $mainColor;
+      padding: 0px 5px;
+    }
+  }
+  .nav_link {
+    @include flexBetween();
+    li {
+      list-style: none;
+      margin: 0px 10px;
+      font-family: "Poppins", sans-serif;
+    }
+  }
+  .bars {
+    display: none;
+    z-index: 10;
+    .line {
+      width: 35px;
+      height: 3px;
+      margin: 5px 0;
+      background: black;
+      transition: 0.2s;
+    }
+  }
+  .nav-active {
+    transform: translate(0) !important;
+  }
+}
+
+// * for toogling the nav button
+.toogle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toogle .line2 {
+  opacity: 0;
+}
+.toogle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+// end of them
+
+// * for mobile devices
+@media screen and (max-width: 768px) {
+  * {
+    cursor: default;
+  }
+
+  nav {
+    .bars {
+      display: block;
+    }
+    .nav_link {
+      position: fixed;
+      top: 0;
+      right: 0;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      background: rgb(235, 235, 235);
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: 0.3s;
+      z-index: 6;
+      li {
+        margin: 10px 0px;
+      }
+    }
+  }
+}
