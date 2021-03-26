@@ -47,6 +47,11 @@ const dataSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: String,
+    default: new Date(),
+    required: true,
+  },
   tokens: [
     {
       token: {

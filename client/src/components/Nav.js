@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   // for toggling the Nav bar
@@ -12,12 +13,28 @@ const Nav = () => {
       <nav>
         <h2 className="nav_title">MERN App</h2>
         <ul className="nav_link">
-          <li> Home </li>
-          <li> About </li>
-          <li> Log In </li>
-          <li> Register </li>
+          <li>
+            <NavLink activeClassName="nav_link_active_class" exact to="/">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeClassName="nav_link_active_class" to="/about">
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeClassName="nav_link_active_class" to="/login">
+              Log In
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeClassName="nav_link_active_class" to="/signup">
+              Register
+            </NavLink>
+          </li>
         </ul>
-
+        {/* the burger icon */}
         <div className="bars" onClick={ToggleNav}>
           <div className="line1 line"></div>
           <div className="line2 line"></div>

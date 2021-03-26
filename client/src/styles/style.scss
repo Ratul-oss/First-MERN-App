@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Train+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 @mixin navFlexAround {
   display: flex;
@@ -37,21 +38,29 @@ $mainColor: #0083fd;
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  overflow-x: hidden !important;
+}
+
 ::selection {
   background: rgba(0, 0, 0, 0.226);
+}
+
+.nav_link_active_class {
+  color: $mainColor !important;
 }
 
 nav {
   @include navFlexAround();
   padding: 5px 0px;
-  background: white;
+  background: rgb(255, 255, 255);
   border-bottom: 2px solid $mainColor;
   z-index: 5;
   position: sticky;
   top: 0;
   left: 0;
   .nav_title {
-    color: rgb(68, 68, 68);
+    color: $mainColor;
     font-family: "Train One", cursive;
     display: flex;
     align-items: center;
@@ -66,7 +75,15 @@ nav {
     li {
       list-style: none;
       margin: 0px 10px;
-      font-family: "Poppins", sans-serif;
+      a {
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+        color: rgb(24, 24, 24);
+        transition: 0.3s;
+        &:hover {
+          color: $mainColor;
+        }
+      }
     }
   }
   .bars {
@@ -74,28 +91,89 @@ nav {
     z-index: 10;
     .line {
       width: 35px;
-      height: 3px;
+      height: 4px;
       margin: 5px 0;
-      background: black;
+      background: rgb(32, 32, 32);
       transition: 0.2s;
     }
   }
   .nav-active {
     transform: translate(0) !important;
   }
+  // * for toogling the nav in mobile devices
+  .toogle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .toogle .line2 {
+    opacity: 0;
+  }
+  .toogle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
 }
 
-// * for toogling the nav button
-.toogle .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
+// register page.
+.registration_page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  .content_wrapper {
+    min-width: 70vw;
+    max-width: 75vw;
+    min-height: 80vh;
+    box-shadow: 1px 2px 5px rgb(187, 187, 187);
+    padding: 30px;
+    border-radius: 5px;
+    margin: 20px;
+    @include flexBetween();
+    .form_image {
+      width: 40%;
+      img {
+        width: 100%;
+      }
+    }
+    .form_container {
+      width: 55%;
+      .form_title {
+        padding-bottom: 10px;
+        color: $mainColor;
+        font-size: 2rem;
+        font-family: "Raleway", sans-serif;
+      }
+      .singleField {
+        width: 100%;
+        margin: 5px 0px;
+        input,
+        select,
+        button {
+          width: 100%;
+          padding: 7px 5px;
+          outline: none;
+          border: none;
+          border-radius: 5px;
+          transition: 0.3s;
+        }
+        input,
+        select {
+          border: 1px solid #ddd;
+          &:focus {
+            border-color: $mainColor;
+          }
+        }
+        button {
+          background: $mainColor;
+          color: white;
+          cursor: pointer;
+          font-size: 1.1rem;
+          box-shadow: 1px 2px 5px rgb(56, 56, 56);
+          &:hover {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
 }
-.toogle .line2 {
-  opacity: 0;
-}
-.toogle .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-// end of them
 
 // * for mobile devices
 @media screen and (max-width: 768px) {
@@ -115,13 +193,35 @@ nav {
       align-items: center;
       height: 100vh;
       width: 100%;
-      background: rgb(235, 235, 235);
+      background: rgba(255, 255, 255, 0.719);
+      backdrop-filter: blur(5px);
       flex-direction: column;
       transform: translateX(100%);
       transition: 0.3s;
       z-index: 6;
       li {
         margin: 10px 0px;
+      }
+    }
+  }
+
+  // the registration page
+  .registration_page {
+    .content_wrapper {
+      min-width: 90vw;
+      max-width: 90vw;
+      min-height: 100vh;
+      padding: 10px;
+      margin: 20px auto 20px auto;
+      .form_image {
+        width: 90%;
+        margin: 20px auto;
+      }
+      .form_container {
+        width: 100%;
+        .form_title {
+          font-size: 1.4rem;
+        }
       }
     }
   }

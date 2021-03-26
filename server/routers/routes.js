@@ -81,7 +81,7 @@ router.post("/register", async (req, res) => {
 });
 
 // * the login route
-router.post("/login", async (req, res) => {
+router.post("/user_login", async (req, res) => {
   try {
     // getting all the typed values from the user
     const typedMail = req.body.email; // the email which the user have typed in the email field

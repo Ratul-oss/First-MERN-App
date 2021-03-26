@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Train+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -9,12 +10,20 @@
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  overflow-x: hidden !important;
+}
+
 ::-moz-selection {
   background: rgba(0, 0, 0, 0.226);
 }
 
 ::selection {
   background: rgba(0, 0, 0, 0.226);
+}
+
+.nav_link_active_class {
+  color: #0083fd !important;
 }
 
 nav {
@@ -39,7 +48,7 @@ nav {
 }
 
 nav .nav_title {
-  color: #444444;
+  color: #0083fd;
   font-family: "Train One", cursive;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -74,7 +83,18 @@ nav .nav_link {
 nav .nav_link li {
   list-style: none;
   margin: 0px 10px;
+}
+
+nav .nav_link li a {
   font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  color: #181818;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+nav .nav_link li a:hover {
+  color: #0083fd;
 }
 
 nav .bars {
@@ -84,9 +104,9 @@ nav .bars {
 
 nav .bars .line {
   width: 35px;
-  height: 3px;
+  height: 4px;
   margin: 5px 0;
-  background: black;
+  background: #202020;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -96,18 +116,107 @@ nav .nav-active {
           transform: translate(0) !important;
 }
 
-.toogle .line1 {
+nav .toogle .line1 {
   -webkit-transform: rotate(-45deg) translate(-5px, 6px);
           transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-.toogle .line2 {
+nav .toogle .line2 {
   opacity: 0;
 }
 
-.toogle .line3 {
+nav .toogle .line3 {
   -webkit-transform: rotate(45deg) translate(-5px, -6px);
           transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.registration_page {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.registration_page .content_wrapper {
+  min-width: 70vw;
+  max-width: 75vw;
+  min-height: 80vh;
+  -webkit-box-shadow: 1px 2px 5px #bbbbbb;
+          box-shadow: 1px 2px 5px #bbbbbb;
+  padding: 30px;
+  border-radius: 5px;
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.registration_page .content_wrapper .form_image {
+  width: 40%;
+}
+
+.registration_page .content_wrapper .form_image img {
+  width: 100%;
+}
+
+.registration_page .content_wrapper .form_container {
+  width: 55%;
+}
+
+.registration_page .content_wrapper .form_container .form_title {
+  padding-bottom: 10px;
+  color: #0083fd;
+  font-size: 2rem;
+  font-family: "Raleway", sans-serif;
+}
+
+.registration_page .content_wrapper .form_container .singleField {
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.registration_page .content_wrapper .form_container .singleField input,
+.registration_page .content_wrapper .form_container .singleField select,
+.registration_page .content_wrapper .form_container .singleField button {
+  width: 100%;
+  padding: 7px 5px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.registration_page .content_wrapper .form_container .singleField input,
+.registration_page .content_wrapper .form_container .singleField select {
+  border: 1px solid #ddd;
+}
+
+.registration_page .content_wrapper .form_container .singleField input:focus,
+.registration_page .content_wrapper .form_container .singleField select:focus {
+  border-color: #0083fd;
+}
+
+.registration_page .content_wrapper .form_container .singleField button {
+  background: #0083fd;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  -webkit-box-shadow: 1px 2px 5px #383838;
+          box-shadow: 1px 2px 5px #383838;
+}
+
+.registration_page .content_wrapper .form_container .singleField button:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -129,7 +238,9 @@ nav .nav-active {
             align-items: center;
     height: 100vh;
     width: 100%;
-    background: #ebebeb;
+    background: rgba(255, 255, 255, 0.719);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -142,6 +253,23 @@ nav .nav-active {
   }
   nav .nav_link li {
     margin: 10px 0px;
+  }
+  .registration_page .content_wrapper {
+    min-width: 90vw;
+    max-width: 90vw;
+    min-height: 100vh;
+    padding: 10px;
+    margin: 20px auto 20px auto;
+  }
+  .registration_page .content_wrapper .form_image {
+    width: 90%;
+    margin: 20px auto;
+  }
+  .registration_page .content_wrapper .form_container {
+    width: 100%;
+  }
+  .registration_page .content_wrapper .form_container .form_title {
+    font-size: 1.4rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
