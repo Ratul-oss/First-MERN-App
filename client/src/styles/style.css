@@ -22,8 +22,19 @@ body {
   background: rgba(0, 0, 0, 0.226);
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 100;
+}
+
 .nav_link_active_class {
   color: #0083fd !important;
+}
+
+.Container {
+  width: 950px;
+  margin: auto;
 }
 
 nav {
@@ -50,15 +61,7 @@ nav {
 nav .nav_title {
   color: #0083fd;
   font-family: "Train One", cursive;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  font-weight: 600;
 }
 
 nav .nav_title span {
@@ -130,6 +133,31 @@ nav .toogle .line3 {
           transform: rotate(45deg) translate(-5px, -6px);
 }
 
+.home_page {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(120deg, #e1f1ff 50%, white 50%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.home_page .HeaderContentWrapper .header_desc {
+  text-align: center;
+}
+
+.home_page .HeaderContentWrapper .header_desc p {
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
+
+.home_page .HeaderContentWrapper .header_desc h1 {
+  color: #0083fd;
+  font-size: 2rem;
+}
+
 .registration_page {
   min-height: 100vh;
   display: -ms-grid;
@@ -165,6 +193,32 @@ nav .toogle .line3 {
 
 .registration_page .content_wrapper .form_image img {
   width: 100%;
+  -webkit-filter: drop-shadow(1px 2px 5px #cccccc);
+          filter: drop-shadow(1px 2px 5px #cccccc);
+  -webkit-animation: register_image 2s ease-in infinite alternate;
+          animation: register_image 2s ease-in infinite alternate;
+}
+
+@-webkit-keyframes register_image {
+  from {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  to {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+}
+
+@keyframes register_image {
+  from {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  to {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
 }
 
 .registration_page .content_wrapper .form_container {
@@ -219,9 +273,323 @@ nav .toogle .line3 {
           box-shadow: none;
 }
 
+.login_page {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.login_page .content_wrapper {
+  min-width: 70vw;
+  max-width: 75vw;
+  min-height: 80vh;
+  -webkit-box-shadow: 1px 2px 5px #bbbbbb;
+          box-shadow: 1px 2px 5px #bbbbbb;
+  padding: 30px;
+  border-radius: 5px;
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.login_page .content_wrapper .form_image {
+  width: 40%;
+}
+
+.login_page .content_wrapper .form_image img {
+  width: 100%;
+  -webkit-filter: drop-shadow(1px 2px 5px #cccccc);
+          filter: drop-shadow(1px 2px 5px #cccccc);
+  -webkit-animation: register_image 2s ease-in infinite alternate;
+          animation: register_image 2s ease-in infinite alternate;
+}
+
+@keyframes register_image {
+  from {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  to {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+}
+
+.login_page .content_wrapper .form_container {
+  width: 55%;
+}
+
+.login_page .content_wrapper .form_container .form_title {
+  padding-bottom: 10px;
+  color: #0083fd;
+  font-size: 2rem;
+  font-family: "Raleway", sans-serif;
+}
+
+.login_page .content_wrapper .form_container .singleField {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.login_page .content_wrapper .form_container .singleField input,
+.login_page .content_wrapper .form_container .singleField select,
+.login_page .content_wrapper .form_container .singleField button {
+  width: 100%;
+  padding: 10px 7px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.login_page .content_wrapper .form_container .singleField input,
+.login_page .content_wrapper .form_container .singleField select {
+  border: 1px solid #ddd;
+  font-size: 1.1rem;
+}
+
+.login_page .content_wrapper .form_container .singleField input:focus,
+.login_page .content_wrapper .form_container .singleField select:focus {
+  border-color: #0083fd;
+}
+
+.login_page .content_wrapper .form_container .singleField button {
+  background: #0083fd;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  -webkit-box-shadow: 1px 2px 5px #383838;
+          box-shadow: 1px 2px 5px #383838;
+}
+
+.login_page .content_wrapper .form_container .singleField button:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.contact_page {
+  padding: 50px 0px;
+  min-height: 100vh;
+}
+
+.contact_page .top_three_cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.contact_page .top_three_cards .single_card {
+  width: 300px;
+  padding: 10px 15px;
+  -webkit-box-shadow: 1px 2px 5px #acacac;
+          box-shadow: 1px 2px 5px #acacac;
+  border-radius: 5px;
+  margin: 10px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.contact_page .top_three_cards .single_card .info h2 {
+  padding-bottom: 5px;
+}
+
+.contact_page .form_container {
+  padding: 20px 0px;
+  width: 100%;
+  -webkit-box-shadow: 1px 2px 5px #acacac;
+          box-shadow: 1px 2px 5px #acacac;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+.contact_page .form_container form .form_header {
+  color: #0083fd;
+  padding-bottom: 10px;
+  font-size: 2rem;
+}
+
+.contact_page .form_container form .three_in_one_field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 5px 0px;
+}
+
+.contact_page .form_container form .three_in_one_field input {
+  width: 300px;
+  padding: 7px 10px;
+  font-size: 1.1rem;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin: 5px;
+}
+
+.contact_page .form_container form .three_in_one_field input:focus {
+  border-color: #0083fd;
+}
+
+.contact_page .form_container form .messageField {
+  margin: 10px 0px;
+}
+
+.contact_page .form_container form .messageField textarea {
+  display: block;
+  width: 99%;
+  margin: auto auto;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 1.1rem;
+  padding: 5px;
+  border-radius: 3px;
+  resize: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.contact_page .form_container form .messageField textarea:focus {
+  border-color: #0083fd;
+}
+
+.contact_page .form_container form .submitButton {
+  margin: 5px 0px;
+}
+
+.contact_page .form_container form .submitButton button {
+  background: #0083fd;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px #636363;
+          box-shadow: 1px 2px 5px #636363;
+  outline: none;
+  border: none;
+  font-size: 1.1rem;
+  padding: 7px 15px;
+  border-radius: 3px;
+  margin-left: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.contact_page .form_container form .submitButton button:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.about_page {
+  padding: 10px 0px;
+  min-height: 90vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.about_page .about_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 50px 20px;
+  -webkit-box-shadow: 1px 2px 5px #555555;
+          box-shadow: 1px 2px 5px #555555;
+  border-radius: 10px;
+}
+
+.about_page .about_card .about_desc {
+  width: 500px;
+}
+
+.about_page .about_card .about_desc h2 {
+  color: #0083fd;
+  font-size: 2rem;
+  padding: 5px 0px;
+}
+
+.about_page .about_card .about_desc p {
+  padding: 5px 0px;
+}
+
+.about_page .about_card .about_desc p span {
+  color: #0083fd;
+}
+
+.about_page .about_card .about_img {
+  width: 300px;
+}
+
+.about_page .about_card .about_img img {
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #0083fd;
+}
+
+@media screen and (max-width: 1024px) {
+  .Container {
+    width: 750px;
+  }
+  .about_page .about_card {
+    -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+  }
+  .about_page .about_card .about_img {
+    width: 40%;
+  }
+  .about_page .about_card .about_desc {
+    width: 45%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   * {
     cursor: default;
+  }
+  .Container {
+    width: 93%;
   }
   nav .bars {
     display: block;
@@ -254,6 +622,16 @@ nav .toogle .line3 {
   nav .nav_link li {
     margin: 10px 0px;
   }
+  .home_page {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #e1f1ff), color-stop(50%, white));
+    background: linear-gradient(to bottom, #e1f1ff 50%, white 50%);
+  }
+  .home_page .HeaderContentWrapper .header_desc p {
+    font-size: 1.3rem;
+  }
+  .home_page .HeaderContentWrapper .header_desc h1 {
+    font-size: 1.8rem;
+  }
   .registration_page .content_wrapper {
     min-width: 90vw;
     max-width: 90vw;
@@ -270,6 +648,66 @@ nav .toogle .line3 {
   }
   .registration_page .content_wrapper .form_container .form_title {
     font-size: 1.4rem;
+  }
+  .login_page .content_wrapper {
+    min-width: 90vw;
+    max-width: 90vw;
+    min-height: 100vh;
+    padding: 10px;
+    margin: 20px auto 20px auto;
+  }
+  .login_page .content_wrapper .form_image {
+    width: 90%;
+    margin: 20px auto;
+  }
+  .login_page .content_wrapper .form_container {
+    width: 100%;
+  }
+  .login_page .content_wrapper .form_container .form_title {
+    font-size: 1.4rem;
+  }
+  .form_container form .form_header {
+    font-size: 1.5rem;
+  }
+  .form_container form .three_in_one_field {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .form_container form .three_in_one_field input {
+    width: 100% !important;
+    margin: 5px 0px !important;
+  }
+  .form_container form .messageField textarea {
+    width: 100% !important;
+  }
+  .form_container form .submitButton button {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+  .about_page .about_card {
+    -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+  }
+  .about_page .about_card .about_img {
+    width: 100%;
+    margin: 10px auto !important;
+  }
+  .about_page .about_card .about_desc {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=style.css.map */

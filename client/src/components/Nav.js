@@ -24,6 +24,11 @@ const Nav = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink activeClassName="nav_link_active_class" to="/contact">
+              Contact
+            </NavLink>
+          </li>
+          <li>
             <NavLink activeClassName="nav_link_active_class" to="/login">
               Log In
             </NavLink>

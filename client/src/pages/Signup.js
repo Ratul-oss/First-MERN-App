@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import FormImg from "../img/register.svg";
 
+// * the signup page
 const Signup = () => {
   const [countries, setCountries] = useState([]);
 
-  // for fething all the data's from country api
+  // * for fething all the data's from country api
   const fetchCountries = async () => {
     try {
       const api = await fetch("https://restcountries.eu/rest/v2/all");
@@ -14,8 +15,11 @@ const Signup = () => {
       console.log("Something went wrong");
     }
   };
+
   useEffect(() => {
     fetchCountries();
+    document.title = "Register Account";
+    window.scrollTo(0, 0);
   }, []);
   return (
     <>
@@ -26,7 +30,7 @@ const Signup = () => {
           </div>
 
           <div className="form_container">
-            <form action="/" method="post">
+            <form>
               <h2 className="form_title">Register Account</h2>
 
               <div className="singleField">
@@ -88,6 +92,9 @@ const Signup = () => {
               <div className="singleField">
                 <select name="userCountry" required>
                   {/* fething countries using the fetchCountries() function */}
+                  <option value="" selected disabled>
+                    Select Country
+                  </option>
                   {countries.map((data, index) => {
                     return (
                       <option key={index} value={data.name}>

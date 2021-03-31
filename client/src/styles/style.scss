@@ -46,8 +46,20 @@ body {
   background: rgba(0, 0, 0, 0.226);
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 100;
+}
+
 .nav_link_active_class {
   color: $mainColor !important;
+}
+
+// * the container
+.Container {
+  width: 950px;
+  margin: auto;
 }
 
 nav {
@@ -62,9 +74,7 @@ nav {
   .nav_title {
     color: $mainColor;
     font-family: "Train One", cursive;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-weight: 600;
     span {
       color: $mainColor;
       padding: 0px 5px;
@@ -112,7 +122,31 @@ nav {
   }
 }
 
-// register page.
+// * the home page/ the header 😅
+.home_page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(120deg, #e1f1ff 50%, white 50%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  .HeaderContentWrapper {
+    .header_desc {
+      text-align: center;
+      p {
+        font-size: 1.5rem;
+        padding-bottom: 10px;
+      }
+      h1 {
+        color: $mainColor;
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+// * register page.
 .registration_page {
   min-height: 100vh;
   display: grid;
@@ -130,6 +164,16 @@ nav {
       width: 40%;
       img {
         width: 100%;
+        filter: drop-shadow(1px 2px 5px rgb(204, 204, 204));
+        animation: register_image 2s ease-in infinite alternate;
+        @keyframes register_image {
+          from {
+            transform: translateY(-5px);
+          }
+          to {
+            transform: translateY(5px);
+          }
+        }
       }
     }
     .form_container {
@@ -175,12 +219,242 @@ nav {
   }
 }
 
+// * login page.
+.login_page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  .content_wrapper {
+    min-width: 70vw;
+    max-width: 75vw;
+    min-height: 80vh;
+    box-shadow: 1px 2px 5px rgb(187, 187, 187);
+    padding: 30px;
+    border-radius: 5px;
+    margin: 20px;
+    @include flexBetween();
+    .form_image {
+      width: 40%;
+      img {
+        width: 100%;
+        filter: drop-shadow(1px 2px 5px rgb(204, 204, 204));
+        animation: register_image 2s ease-in infinite alternate;
+        @keyframes register_image {
+          from {
+            transform: translateY(-5px);
+          }
+          to {
+            transform: translateY(5px);
+          }
+        }
+      }
+    }
+    .form_container {
+      width: 55%;
+      .form_title {
+        padding-bottom: 10px;
+        color: $mainColor;
+        font-size: 2rem;
+        font-family: "Raleway", sans-serif;
+      }
+      .singleField {
+        width: 100%;
+        margin: 10px 0px;
+        input,
+        select,
+        button {
+          width: 100%;
+          padding: 10px 7px;
+          outline: none;
+          border: none;
+          border-radius: 5px;
+          transition: 0.3s;
+        }
+        input,
+        select {
+          border: 1px solid #ddd;
+          font-size: 1.1rem;
+          &:focus {
+            border-color: $mainColor;
+          }
+        }
+        button {
+          background: $mainColor;
+          color: white;
+          cursor: pointer;
+          font-size: 1.1rem;
+          box-shadow: 1px 2px 5px rgb(56, 56, 56);
+          &:hover {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// * the contact page
+.contact_page {
+  padding: 50px 0px;
+  min-height: 100vh;
+
+  // the three cards at the top
+  .top_three_cards {
+    @include flexCenter();
+    margin-bottom: 50px;
+    .single_card {
+      width: 300px;
+      padding: 10px 15px;
+      box-shadow: 1px 2px 5px rgb(172, 172, 172);
+      border-radius: 5px;
+      margin: 10px 5px;
+      @include navFlexAround();
+      .info {
+        h2 {
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  // * the form
+  .form_container {
+    padding: 20px 0px;
+    width: 100%;
+    box-shadow: 1px 2px 5px rgb(172, 172, 172);
+    margin: 10px auto;
+    padding: 10px;
+    form {
+      .form_header {
+        color: $mainColor;
+        padding-bottom: 10px;
+        font-size: 2rem;
+      }
+      .three_in_one_field {
+        @include flexCenter();
+        margin: 5px 0px;
+        input {
+          width: 300px;
+          padding: 7px 10px;
+          font-size: 1.1rem;
+          border-radius: 3px;
+          border: 1px solid #ddd;
+          outline: none;
+          transition: 0.3s;
+          margin: 5px;
+          &:focus {
+            border-color: $mainColor;
+          }
+        }
+      }
+      .messageField {
+        margin: 10px 0px;
+        textarea {
+          display: block;
+          width: 99%;
+          margin: auto auto;
+          border: 1px solid #ddd;
+          outline: none;
+          font-size: 1.1rem;
+          padding: 5px;
+          border-radius: 3px;
+          resize: none;
+          transition: 0.3s;
+          &:focus {
+            border-color: $mainColor;
+          }
+        }
+      }
+      .submitButton {
+        margin: 5px 0px;
+        button {
+          background: $mainColor;
+          color: white;
+          box-shadow: 1px 2px 5px rgb(99, 99, 99);
+          outline: none;
+          border: none;
+          font-size: 1.1rem;
+          padding: 7px 15px;
+          border-radius: 3px;
+          margin-left: 5px;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// * the about page
+.about_page {
+  padding: 10px 0px;
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+  .about_card {
+    @include flexCenter();
+    padding: 50px 20px;
+    box-shadow: 1px 2px 5px rgb(85, 85, 85);
+    border-radius: 10px;
+    .about_desc {
+      width: 500px;
+      h2 {
+        color: $mainColor;
+        font-size: 2rem;
+        padding: 5px 0px;
+      }
+      p {
+        padding: 5px 0px;
+        span {
+          color: $mainColor;
+        }
+      }
+    }
+    .about_img {
+      width: 300px;
+      img {
+        width: 100%;
+        border-radius: 5px;
+        border: 2px solid $mainColor;
+      }
+    }
+  }
+}
+
+// * for laptop and ipad
+@media screen and (max-width: 1024px) {
+  .Container {
+    width: 750px;
+  }
+
+  // * the about page
+  .about_page {
+    .about_card {
+      flex-wrap: wrap-reverse;
+      .about_img {
+        width: 40%;
+      }
+      .about_desc {
+        width: 45%;
+      }
+    }
+  }
+}
+
 // * for mobile devices
 @media screen and (max-width: 768px) {
   * {
     cursor: default;
   }
 
+  .Container {
+    width: 93%;
+  }
+
+  // * nav bar
   nav {
     .bars {
       display: block;
@@ -205,7 +479,22 @@ nav {
     }
   }
 
-  // the registration page
+  // * The home page
+  .home_page {
+    background: linear-gradient(to bottom, #e1f1ff 50%, white 50%);
+    .HeaderContentWrapper {
+      .header_desc {
+        p {
+          font-size: 1.3rem;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
+  // * the registration page
   .registration_page {
     .content_wrapper {
       min-width: 90vw;
@@ -222,6 +511,69 @@ nav {
         .form_title {
           font-size: 1.4rem;
         }
+      }
+    }
+  }
+
+  // * login page
+  .login_page {
+    .content_wrapper {
+      min-width: 90vw;
+      max-width: 90vw;
+      min-height: 100vh;
+      padding: 10px;
+      margin: 20px auto 20px auto;
+      .form_image {
+        width: 90%;
+        margin: 20px auto;
+      }
+      .form_container {
+        width: 100%;
+        .form_title {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  // * the contact page contact form
+  .form_container {
+    form {
+      .form_header {
+        font-size: 1.5rem;
+      }
+      .three_in_one_field {
+        @include flexColumn();
+        width: 100%;
+        input {
+          width: 100% !important;
+          margin: 5px 0px !important;
+        }
+      }
+      .messageField {
+        textarea {
+          width: 100% !important;
+        }
+      }
+      .submitButton {
+        button {
+          margin-left: 0 !important;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // * the about page
+  .about_page {
+    .about_card {
+      flex-wrap: wrap-reverse;
+      .about_img {
+        width: 100%;
+        margin: 10px auto !important;
+      }
+      .about_desc {
+        width: 100%;
       }
     }
   }
