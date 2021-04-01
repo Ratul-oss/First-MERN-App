@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Contact from "./pages/Contact";
+import Error from "./pages/404";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="" component={Error} />
         </Switch>
       </Router>
     </>

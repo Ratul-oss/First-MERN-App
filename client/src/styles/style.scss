@@ -424,6 +424,36 @@ nav {
   }
 }
 
+// * 404 Error page
+.error_page {
+  min-height: 90vh;
+  @include flexColumn();
+  text-align: center;
+  h2 {
+    color: $mainColor;
+    padding: 5px 0px;
+  }
+  p {
+    padding: 5px 0px;
+    font-size: 1.1rem;
+  }
+  a {
+    display: inline-block;
+    margin: 5px 0px;
+    padding: 6px 20px;
+    font-size: 1.1rem;
+    border: 2px solid $mainColor;
+    color: $mainColor;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: 0.5s;
+    &:hover {
+      background: $mainColor;
+      color: white;
+    }
+  }
+}
+
 // * for laptop and ipad
 @media screen and (max-width: 1024px) {
   .Container {

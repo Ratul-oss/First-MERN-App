@@ -568,6 +568,54 @@ nav .toogle .line3 {
   border: 2px solid #0083fd;
 }
 
+.error_page {
+  min-height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.error_page h2 {
+  color: #0083fd;
+  padding: 5px 0px;
+}
+
+.error_page p {
+  padding: 5px 0px;
+  font-size: 1.1rem;
+}
+
+.error_page a {
+  display: inline-block;
+  margin: 5px 0px;
+  padding: 6px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #0083fd;
+  color: #0083fd;
+  text-decoration: none;
+  border-radius: 2px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.error_page a:hover {
+  background: #0083fd;
+  color: white;
+}
+
 @media screen and (max-width: 1024px) {
   .Container {
     width: 750px;
