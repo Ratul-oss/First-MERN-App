@@ -29,20 +29,27 @@ const Nav = ({ isLoggedIn, logOutUser }) => {
             </NavLink>
           </li>
           {isLoggedIn ? (
-            <li>
-              <button
-                style={{
-                  outline: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  background: "none",
-                  fontSize: "1.1rem",
-                }}
-                onClick={logOutUser}
-              >
-                Log Out
-              </button>
-            </li>
+            <>
+              <li>
+                <NavLink activeClassName="nav_link_active_class" to="/users">
+                  Users
+                </NavLink>
+              </li>
+              <li>
+                <button
+                  style={{
+                    outline: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    background: "none",
+                    fontSize: "1.1rem",
+                  }}
+                  onClick={logOutUser}
+                >
+                  Log Out
+                </button>
+              </li>
+            </>
           ) : (
             <>
               <li>

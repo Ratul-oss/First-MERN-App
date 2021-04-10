@@ -454,6 +454,42 @@ nav {
   }
 }
 
+// * the users page
+.user_page {
+  .users_wrapper {
+    @include flexCenter();
+    .single_user {
+      width: 300px;
+      text-align: center;
+      padding: 20px 10px;
+      box-shadow: 1px 2px 5px #ddd;
+      margin: 8px;
+      border-radius: 5px;
+      .userimg {
+        width: 50%;
+        margin: 10px auto;
+        img {
+          width: 100%;
+        }
+      }
+      a {
+        text-decoration: none;
+        padding: 7px 20px;
+        border: 2px solid dodgerblue;
+        color: dodgerblue;
+        display: inline-block;
+        margin: 10px;
+        transition: 0.3s;
+        border-radius: 3px;
+        &:hover {
+          background: dodgerblue;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
 // * for laptop and ipad
 @media screen and (max-width: 1024px) {
   .Container {

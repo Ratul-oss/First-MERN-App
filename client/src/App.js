@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Contact from "./pages/Contact";
 import Error from "./pages/404";
 import Users from "./pages/Users";
+import SingleUser from "./pages/SingleUser";
 
 const App = () => {
   // for handling the user informations
@@ -101,9 +102,14 @@ const App = () => {
           ) : null}
 
           {isLoggedIn ? (
-            <Route path="/users">
-              <Users />
-            </Route>
+            <>
+              <Route path="/users">
+                <Users />
+              </Route>
+              <Route path="/singleUser/:id">
+                <SingleUser />
+              </Route>
+            </>
           ) : null}
 
           <Route path="" component={Error} />

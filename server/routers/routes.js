@@ -58,6 +58,28 @@ router.post("/contact_me", async (req, res) => {
   }
 });
 
+// the user api.
+router.get("/users", async (req, res) => {
+  try {
+    const data = await UserData.find();
+    res.status(200).send(data);
+  } catch (err) {
+    res.status(400).send("Something went wrong");
+  }
+});
+// the user api for single user.
+router.get("/singleUser/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const data = await UserData.findOne({ _id: id });
+
+    res.status(200).send(data);
+  } catch (err) {
+    res.status(400).send("Something went wrong");
+  }
+});
+
 // * the registration route
 router.post("/register", async (req, res) => {
   try {
