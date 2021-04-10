@@ -1,11 +1,21 @@
 import React, { useEffect } from "react";
 import aboutImg from "../img/about.png";
+import { useHistory } from "react-router-dom";
 
-const About = () => {
+const About = ({ user, status }) => {
+  const history = useHistory();
+
   useEffect(() => {
     document.title = "Profile Creator About";
     window.scrollTo(0, 0);
-  }, []);
+    // setting the status to 400 is the user is not authenticated
+
+    if (status === 400) {
+      history.push("/login");
+    } else if (status === 200) {
+      history.push("/about");
+    }
+  }, [user, status]);
 
   return (
     <>
@@ -13,21 +23,24 @@ const About = () => {
         <div className="Container">
           <div className="about_card">
             <div className="about_desc">
-              <h2>DevR</h2>
+              <h2>{user.name}</h2>
               <p>
-                Country: <span>Bangladesh</span>
+                Country: <span>{user.country}</span>
               </p>
               <p>
-                Email: <span>azammmgol@gmail.com</span>
+                Email: <span>{user.email}</span>
               </p>
               <p>
-                Profession <span>Full Stack Developer</span>
+                Profession <span>{user.profession}</span>
               </p>
               <p>
-                Gender: <span>Male</span>
+                Gender: <span>{user.gender}</span>
               </p>
               <p>
-                Phone <span>01872786575</span>
+                Phone: <span>{"0" + user.phone}</span>
+              </p>
+              <p>
+                Member Since: <span>{user.date}</span>
               </p>
             </div>
             <div className="about_img">

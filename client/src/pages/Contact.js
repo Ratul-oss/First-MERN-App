@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import Form from "../components/Contact_Page/Form";
 import TopThreenCards from "../components/Contact_Page/TopThreenCards";
 
-const Contact = () => {
+const Contact = ({ user, status }) => {
   useEffect(() => {
     document.title = "Profile Creator - Contact";
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <>
       <section className="contact_page">
@@ -14,9 +15,9 @@ const Contact = () => {
           {/*  */}
 
           {/* this one is containing the three cards */}
-          <TopThreenCards />
+          <TopThreenCards user={user} status={status} />
           {/* the form Component */}
-          <Form />
+          <Form user={user} status={status} />
 
           {/*  */}
         </div>

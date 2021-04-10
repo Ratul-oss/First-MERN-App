@@ -4,11 +4,12 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
 
-const TopThreenCards = () => {
+const TopThreenCards = ({ user, status }) => {
   const iconStyle = {
     fontSize: "2.5rem",
     color: "#0083fd",
   };
+
   return (
     <>
       <div className="top_three_cards">
@@ -16,19 +17,19 @@ const TopThreenCards = () => {
 
         <SingleCard
           title="Phone"
-          subtitle="01872786575"
+          subtitle={status === 200 ? user.phone : "Not Provided Yet"}
           style={iconStyle}
           icon={<PhoneIcon style={iconStyle} />}
         />
         <SingleCard
           title="Email"
-          subtitle="azammmgol@gmail.com"
+          subtitle={status === 200 ? user.email : "Not Provided yet"}
           style={iconStyle}
           icon={<MailOutlineIcon style={iconStyle} />}
         />
         <SingleCard
-          title="Profession"
-          subtitle="Full Stack Developer"
+          title="Phone"
+          subtitle={status === 200 ? user.phone : "Not Provided Yet"}
           style={iconStyle}
           icon={<WorkOutlineIcon style={iconStyle} />}
         />

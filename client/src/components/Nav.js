@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ isLoggedIn, logOutUser }) => {
   // for toggling the Nav bar
   const ToggleNav = () => {
     document.querySelector(".nav_link").classList.toggle("nav-active");
@@ -28,16 +28,35 @@ const Nav = () => {
               Contact
             </NavLink>
           </li>
-          <li>
-            <NavLink activeClassName="nav_link_active_class" to="/login">
-              Log In
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="nav_link_active_class" to="/signup">
-              Register
-            </NavLink>
-          </li>
+          {isLoggedIn ? (
+            <li>
+              <button
+                style={{
+                  outline: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  background: "none",
+                  fontSize: "1.1rem",
+                }}
+                onClick={logOutUser}
+              >
+                Log Out
+              </button>
+            </li>
+          ) : (
+            <>
+              <li>
+                <NavLink activeClassName="nav_link_active_class" to="/login">
+                  Log In
+                </NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName="nav_link_active_class" to="/signup">
+                  Register
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
         {/* the burger icon */}
         <div className="bars" onClick={ToggleNav}>
